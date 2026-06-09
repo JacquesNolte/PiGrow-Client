@@ -5,5 +5,7 @@ services:
     restart: unless-stopped
     devices:
       - "/dev/gpiomem:/dev/gpiomem"
-    group_add:
-      - gpio
+    privileged: true
+    volumes:
+      - /sys:/sys
+      - /dev:/dev

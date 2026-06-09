@@ -1,12 +1,14 @@
-import { Gpio } from 'onoff';
+import { Gpio, BinaryValue } from 'onoff';
 
 // BCM pin 4 configured as an output line
-const led: Gpio = new Gpio(4, 'out'); 
+const led: Gpio = new Gpio(516, 'out');
 
 console.log('TypeScript GPIO container started. Blinking LED on BCM Pin 4...');
 
 const iv: NodeJS.Timeout = setInterval(() => {
-  led.writeSync(led.readSync() ^ 1); 
+  // The result of the XOR operation is explicitly cast to a BinaryValue
+  const nextState = (led.readSync() ^ 1) as BinaryValue;
+  led.writeSync(nextState);
 }, 200);
 
 // Graceful cleanup on container termination
