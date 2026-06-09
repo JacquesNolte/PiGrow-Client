@@ -1,6 +1,6 @@
 services:
   pi-grow-client:
-    build: .
+    image: 192.168.1.100:5001/pi-grow-client:latest
     container_name: pi-grow-client
     restart: unless-stopped
     devices:
