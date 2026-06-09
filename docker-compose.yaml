@@ -1,0 +1,9 @@
+services:
+  pi-grow-client:
+    build: .
+    container_name: pi-grow-client
+    restart: unless-stopped
+    devices:
+      - "/dev/gpiomem:/dev/gpiomem"
+    group_add:
+      - gpio
